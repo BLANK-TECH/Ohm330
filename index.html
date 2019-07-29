@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel="stylesheet" href="style.css">
+            <script src="https://kit.fontawesome.com/acb4523397.js"></script>
+            <title>Ohm 330</title>
+    </head>
+    <body>
+        <header>
+            <!--LOGO-->
+            <figure class="logo">
+                <img src="" id="">
+            </figure>
+            <!--MENU HAMBURGUESA-->
+            <figure class="icon-menu">
+                <a href="#" class="" id=""><i class="fas fa-bars"></i></a>
+            </figure>
+                <!--MENU DE NAVEGACION-->
+                    <nav class="menu" id="menu">
+                            <ul>
+                                <li><a href="#" id="">Inventario</a></li>
+                                <li><a href="#" id="">Cotizador</a></li>        
+                                <li><a href="#" id="">Pendientes</a></li> 
+                                <li><a href="#" id="">Perfil</a></li> 
+                                <li><a href="#" id="">Cerrar Sesión</a></li>       
+                            </ul>
+                        </nav>
+        </header>
+        <!--INICIO DE SESION-->
+        <section class="sig-in">
+            <form>
+                <label for="username">Usuario</label>
+                <input type="text" placeholder="Ingresa Usuario">
+
+                <label for="password">Contraseña</label>
+                <input type="password" placeholder="Ingresa Contraseña">
+
+                <input type="submit" value="Entrar">
+
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </form>
+        </section>
+        <!--COTIZADOR-->
+        <section class="quote">
+
+            <!--PANTALLA DE BUSQUEDA DE PRODUCTO-->
+            <section class="quote-search">
+                <label for="search">Producto</label>
+                <input type="search" placeholder="Buscar">
+
+                <label for="quantity">Cantidad</label>
+                <input type="number">
+
+
+                <a href="#"><i class="fas fa-plus"></i></a>
+                <!--tabla donde se van a imprimir los productos que vaya agregando-->
+                <table>
+                    <tr>
+                        <td>Celda producto</td>
+                        <td>Celda cantidad</td>
+                        <td>Celda icono editar</td>
+                        <td>Celda icono eliminar</td>
+                    </tr>
+                </table>
+
+                <a href="#"><i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!--PANTALLA AGREGAR OTROS PRODUCTOS-->
+            <section class="other">
+
+                <label for="other-name">Otro</label>
+                <input type="text" placeholder="Nombre del producto">
+
+                <label for="other-cost">Precio Unitario</label>
+                <input type="number" placeholder="$">
+
+                <label for="other-quantity">Cantidad</label>
+                <input type="number">
+
+                <a href="#"><i class="fas fa-plus"></i></a>
+
+                <a href="#"><i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!--PANTALLA DETALLE DE ENVIO Y VIGENCIA-->
+            <section class="sending-validity">
+                <label for="validity">Vigencia</label>
+                <input type="text" id="validity">
+
+                <input type="radio" value="Sin envío" id="no-sending">
+                <label for="no-sending">Sin envío</label>
+
+                <input type="radio" value="Con envío" id="sending">
+                <label for="send">Con envío</label>
+                
+                <label for="CP">Código Postal</label>
+                <input type="number" id="CP">
+
+                <input type="submit" value="Generar costo">
+
+                <p id="print-cost">$</p>
+                <a href="#"><i class="fas fa-arrow-right"></i></a>  
+            </section>
+
+            <!--PANTALLA FORMA DE PAGO-->
+            <section class="way-to-pay">
+
+                <p>Forma de pago</p>
+
+                    <input type="radio" value="Efectivo" id="cash">
+                    <label for="cash">Efectivo</label>
+
+                    <input type="radio" value="Tarjeta" id="card">
+                    <label for="card">Tarjeta</label>
+
+                    <input type="radio" value="Credito" id="credit">
+                    <label for="credit">Crédito</label>
+                
+                <p>Divisa</p>
+
+                    <input type="radio" value="US" id="dollar">
+                    <label for="dollar">US</label>
+
+                    <input type="radio" value="MNX" id="pesos">
+                    <label for="pesos">MNX</label>
+
+                    <p id="exchange"></p>
+
+                    <input type="submit" value="Cotizar">
+            </section>
+
+            <!--PANTALLA VISTA PREVIA-->
+            <section class="preview">
+
+                <h2>RESUMEN</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cant</th>
+                            <th>Producto</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Celda cantidad</td>
+                        <td>Celda producto</td>
+                        <td>Celda precio unitario</td>
+                        <td>Celda total</td>
+                    </tr>
+                </table>
+
+                <p>Subtotal $</p>
+                <p id="preview-subtotal"></p>
+
+                <p>IVA $</p>
+                <p id="IVA"></p>
+
+                <p>Envío $</p>
+                <p id="preview-sending"></p>
+
+                <p>TOTAL $</p>
+                <p id="preview-total"></p>
+
+                <p id="monthly">"aquí se imprime la mensualidad"</p>
+
+                <p>"aquí se imprime la vigencia"</p>
+                <p>"aquí se imprime el precio del dolar"</p>
+
+                <input type="submit" value="Editar">
+                <input type="submit" value="Guardar">
+                <input type="submit" value="Enviar">
+                <input type="submit" value="Cancelar">
+            </section>
+
+            <!--PANTALLA ENVIAR POR CORREO-->
+            <section class="e-mail">
+                
+                <label for="name-client">Nombre</label>
+                <input type="text" id="name-client">
+
+                <label for="e-mail">E-mail</label>
+                <input type="email" id="e-mail" placeholder="ejemplo@ejemplo.com">
+                
+                <input type="submit" value="Enviar">
+
+            </section>
+        </section>
+    </body>
+
+</html>
