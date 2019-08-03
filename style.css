@@ -515,6 +515,226 @@ header .menu {
 
 .payment-methods .payment {
     width: 100%;
-    height: 50%;
+    height: 20%;
+ 
+}
+
+.payment-methods .payment .i14, .l13, .i15, .l14, .i16, .l15{
+    display: inline-block;
+    margin: 0 0 0 8%;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.payment-methods .payment .l13, .i15, .l14, .i16, .l15 {
+    margin: 0 2%;
+}
+
+.payment-methods .currency {
+    width: 100%;
+    height: 20%;
+    margin: 5% 0;
     
+}
+
+.payment-methods .currency .i17, .l16, .i18, .l17 {
+    display: inline-block;
+    margin: 0 0 0 8%;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.payment-methods .payment  .l16, .i18, .l17 {
+    margin: 0 2%;
+}
+
+.payment-methods .i19[type=submit] {
+    display: inline-block;
+    width: 50%;
+    height: 5%;
+    display: block;
+    color: #fcfcfc;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 5% auto 3% auto;
+  
+}
+
+.payment-methods .arrowG #arrow8{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.preview {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.preview h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+.preview h2 {
+    display: inline-block;
+    margin: 0 0 0 8%;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 10% 8%;
+}
+
+.preview .arrowH #arrow9{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+.preview .arrowI #arrow10{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.preview-costs {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.preview-costs h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+
+.preview-costs .i20[type=submit] {
+    display: inline-block;
+    width: 50%;
+    height: 5%;
+    display: block;
+    color: #fcfcfc;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 5% auto 3% auto;
+  
+}
+
+.email{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.email h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+.email .email1 {
+    display: inline-block;
+    width: 50%;
+    height: 10%;
+    margin: 5% 0 0 8%;
+    
+}
+
+.email .email1 .l17 {
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+
+.email .email1  .i21[type=text] {
+    display: inline-block;
+    width: 80%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.email .email2 {
+    display: block;
+    width: 50%;
+    height: 10%;
+    margin: 5% 0 0 8%;
+}
+
+.email .email2 .l18 {
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+
+.email .email2 .i22[type=email] {
+    display: inline-block;
+    width: 80%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.email  .i23[type=submit] {
+    display: inline-block;
+    width: 50%;
+    height: 5%;
+    display: block;
+    color: #fcfcfc;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 10% auto 3% auto;
 }
