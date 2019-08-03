@@ -42,4 +42,9 @@ https://www.figma.com/proto/aiREYyuR9LFGcTxp0Z2yrOqN/330-Ohms?node-id=55%3A131&s
 https://www.figma.com/proto/aiREYyuR9LFGcTxp0Z2yrOqN/330-Ohms?node-id=7%3A40&scaling=scale-down
 
 ## Roadmap
+
 https://trello.com/b/p2516AoM/roadmap-ibm
+
+## Recursos Adicionales
+
+https://docs.google.com/presentation/d/160blhCb5CVbzQZ1NiL9SYFhPEAzCA0A72y-S437EuCU/edit?usp=sharing
