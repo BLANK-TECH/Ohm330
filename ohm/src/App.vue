@@ -28,14 +28,14 @@
       <v-stepper-items>
         <v-stepper-content step="1">
           <v-layout wrap>
-                      <v-flex xs8>
+                      <v-flex xs6>
               <v-autocomplete
+              class="busqueda"
                 v-model="product"
                 :disabled="isUpdating"
                 :items="shop"
                 filled
                 chips
-                color="blue-grey lighten-2"
                 label="Select"
                 item-text="name"
                 item-value="name"
@@ -68,17 +68,17 @@
                 </template>
               </v-autocomplete>
             </v-flex>
-            <v-flex xs2>
-              <label class="l5" for="quantity">Cantidad</label>
-              <v-text-field
+            <v-flex xs3>
+              <label class="cantidad-texto" for="quantity">Cantidad</label>
+              <v-text-field class="cantidad-input"
                 v-model="quantity"
                 type="number"
                 value="0"
               >
               </v-text-field>
             </v-flex>
-            <v-flex xs2>
-              <v-btn class="mx-2" fab dark color="indigo" @click="create()">
+            <v-flex xs3>
+              <v-btn class="add" @click="create()">
                 <v-icon dark>add</v-icon>
               </v-btn>
             </v-flex>
@@ -117,7 +117,7 @@
               </tr>
             </tbody>
           </v-simple-table>
-           <v-btn
+           <v-btn 
             color="primary"
             @click="e1 = 2"
           >
@@ -128,7 +128,7 @@
   
         <v-stepper-content step="2">
           <v-layout wrap>
-            <v-flex xs6>
+            <v-flex xs4>
               <label class="l5" for="quantity">Nuevo producto</label>
               <v-text-field
                 v-model="new_product.name"
@@ -136,9 +136,10 @@
               >
               </v-text-field>
             </v-flex>
-            <v-flex xs2>
-              <label class="l5" for="quantity">Cantidad</label>
+            <v-flex xs3>
+              <label class="cantidad-texto" for="quantity">Cantidad</label>
               <v-text-field
+              class=""
                 v-model="new_product.quantity"
                 type="number"
                 value="0"
@@ -146,9 +147,10 @@
               >
               </v-text-field>
             </v-flex>
-            <v-flex xs2>
-              <label class="l5" for="quantity">Precio</label>
+            <v-flex xs3>
+              <label class="cantidad-texto" for="quantity">Precio</label>
               <v-text-field
+                class="cantidad-input"
                 v-model="new_product.price"
                 type="number"
                 value="0"
@@ -157,7 +159,7 @@
               </v-text-field>
             </v-flex>
             <v-flex xs2>
-              <v-btn class="mx-2" fab dark color="indigo" @click="create_new_product()">
+              <v-btn class="add"  @click="create_new_product()">
                 <v-icon dark>add</v-icon>
               </v-btn>
             </v-flex>
@@ -198,7 +200,7 @@
   
         <v-stepper-content step="3">
           <section class="sending-validity">
-            <v-flex xs12>
+            <v-flex xs>
               <label class="l5" for="quantity">Vigencia de la cotización</label>
               <div>
                 <v-text-field
@@ -213,12 +215,12 @@
             </v-flex>
             <div class="sending">
               <p>Envio a domicilio</p>
-              <label class="l10" for="no-sending">Sin envío</label>
+              <label class="l10">Sin envío</label>
               <v-switch v-model="shipping" inset></v-switch>
-              <label class="l11" for="send">Con envío</label>
+              <label>Con envío</label>
             </div>
-            <div class="postal-code" v-if="shipping">
-              <label class="l12" for="CP">Código Postal</label>
+            <div v-if="shipping">
+              <label>Código Postal</label>
               <v-text-field
                 v-model="zone_code"
                 type="number"
@@ -228,9 +230,9 @@
               </v-text-field>
               <v-btn class="ma-2" color="primary" dark @click="generate_cost()">
                 Consultar
-                <v-icon dark right>local_shipping</v-icon>
+                <v-icon dark right>cached</v-icon>
               </v-btn>
-              <p id="print-cost" v-if="shipping_cost > 0">${{shipping_cost}}</p>
+              <p v-if="shipping_cost > 0">${{shipping_cost}}</p>
             </div>
 
             </section>
@@ -247,29 +249,69 @@
         <v-stepper-content step="4">
           <div class="payment">
             <p>Forma de pago</p>
-            <input class="i14" type="radio" value="Efectivo" id="cash">
-            <label class="l13" for="cash">Efectivo</label>
-
-            <input class="i15" type="radio" value="Tarjeta" id="card">
-            <label class="l14" for="card">Tarjeta</label>
-
-            <input class="i16" type="radio" value="Credito" id="credit">
-            <label class="l15" for="credit">Crédito</label>
+            <v-radio-group v-model="payment">
+              <v-radio
+                label="Efectivo"
+                color="orange darken-3"
+                value="effective"
+              ></v-radio>
+              <v-radio
+                label="Tarjeta"
+                color="orange darken-3"
+                value="card"
+              ></v-radio>
+              <v-radio
+                label="Crédito"
+                color="orange darken-3"
+                value="credit"
+              ></v-radio>
+            </v-radio-group>
+            <div v-if="payment == 'credit'">
+              <div>
+                <label>Mensualidades</label>
+                <v-text-field
+                  v-model="month_pay"
+                  type="number"
+                  value="0"
+                  min="0"
+                >
+                </v-text-field>
+              </div>
+              <div>
+                <label>Intereses</label>
+                <v-text-field
+                  v-model="interest"
+                  type="number"
+                  value="0"
+                  min="0"
+                >
+                </v-text-field>
+                <span>%</span>
+              </div>
+            </div>
           </div>
           <div class="currency">
             <p>Divisa</p>
-
-            <input class="i17" type="radio" value="US" id="dollar">
-            <label class="l16" for="dollar">US</label>
-
-            <input class="i18" type="radio" value="MNX" id="pesos">
-            <label  class="l17" for="pesos">MNX</label>
-
-            <p id="exchange"></p>
+            <v-radio-group v-model="currency">
+              <v-radio
+                label="MXN"
+                color="orange darken-3"
+                value="peso"
+              ></v-radio>
+              <v-radio
+                label="USD"
+                color="orange darken-3"
+                value="dollar"
+              ></v-radio>
+            </v-radio-group>
           </div>
-                
-          <input class="i19" type="submit" value="Cotizar">
-          
+          <div v-if="currency == 'dollar'">
+            <v-btn class="ma-2" color="primary" dark @click="generate_currency()">
+              Consultar
+              <v-icon dark right>cached</v-icon>
+            </v-btn>
+            <p>{{current_currency}}</p>
+          </div>          
           <v-btn
             color="primary"
             @click="e1 = 5"
@@ -282,7 +324,7 @@
           
         <v-stepper-content step="5">
           <section class="preview">
-            <h1>COTIZADOR</h1>
+            <h1>cotización</h1>
             <h2>RESUMEN</h2>
             <table>
               <thead>
@@ -362,11 +404,16 @@ export default {
       e1: 0,
       dense: false,
       fixedHeader: true,
+      currency: 'peso',
+      current_currency: '',
       validity: 0,
       height: 300,
       validity: 0,
       zone_code: 0,
       shipping_cost:0,
+      payment: 'effective',
+      interest: 0,
+      month_pay: 0,
       product: '',
       new_product: {
         name: '',
@@ -434,6 +481,7 @@ export default {
       ]
     }
   },
+
   watch: {
     isUpdating (val) {
       if (val) {
@@ -446,7 +494,7 @@ export default {
     create: function() {
       let product_filter = this.shop.filter(product => product.name == this.product)[0]
       this.products.push({
-        product: product_filter,
+        product_filter,
         quantity: this.quantity
       })
       this.clear_inputs()
@@ -468,96 +516,27 @@ export default {
       } else {
         this.shipping_cost = "No value found";
       }
+    },
+    generate_currency: function() {
+      let today = new Date();
+      let dd = String(today.getDate()).padStart(2, '0');
+      let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      let yyyy = today.getFullYear();
+
+      today = mm + '/' + dd + '/' + yyyy;
+      this.current_currency = `Precio del dolar el día ${today}:  19.31`
     }
   },
 };
 </script>
     
 <style scoped>
-.l5 {
-  colorscpink;
-*{
-    margin: 0%;
-    padding: 0%;
-    overflow-x: hidden;
-}
 
 
-
-header {
-    width: 100vw;
-    height: 10vh;
-    border-bottom: 4px solid rgb(250, 137, 67);   
-    box-shadow:  0px 2px 10px grey;
-    
-}   
-
-header .logo {
-    width: 40%;
-    height: 100%;
-    display: inline-block;
-}
-
-header .logo img {
-    width: 100%;
-    height: 70%;
-    margin: 5% 0;
-}
-
-header .icon-menu {
-    width: 40%;
-    height: 100%;
-    display: inline-block;
-    float: right;
-   
-}
-
-header .icon-menu a {
-    width: 40%;
-    height: 100%;
-    float: right;
-    margin: 0 5% 0 0;
-     overflow-y: hidden;
-}
-
-
-header .icon-menu a i {
-    width: 60%;
-    height: 80%;
-    float: right;
-    margin: 40% 5% 0 0;
-    color: black;
-    font-size: 1.5rem;
-}
-
-
-header .menu {
-    display: none;
-}
-
-.sign-in {
-    width: 100vw;
-    height: 90vh;
-}
-
-.sign-in form {
+.busqueda{
+    display: inline;
     width: 80%;
-    height: 80%;
-    margin: 25% auto;
-}
-
-.sign-in form .l1 {
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1.5rem;
-    margin: 0 15%;
-}
-
-.sign-in form .i1[type=text] {
-    display: inline-block;
-    width: 70%;
-    height: 10%;
+    height: 55%;
     display: block;
     color: black;
     background-color: #f8f4f1;
@@ -565,87 +544,22 @@ header .menu {
     border: 3px solid #FF6300;
     box-shadow: 0px 2px 10px grey;
     text-align: center;
-    font-size: 1.5rem;
-    margin: 2% 0 10% 15%;
-} 
-
-.sign-in form .l2 {
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1.5rem;
-    margin: 0 15%;
-}
-.sign-in form .i2[type=password]{
-    display: inline-block;
-    width: 70%;
-    height: 10%;
-    display: block;
-    color: black;
-    background-color: #f8f4f1;
-    border-radius: 5px;
-    border: 3px solid #FF6300;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1.5rem;
-    margin: 2% 0 10% 15%;
+    font-size: 1rem;
+    margin: 15% 0 0 8%;
 }
 
-
-.sign-in form .i3[type=submit]{
-    display: inline-block;
-    width: 70%;
-    height: 10%;
-    display: block;
-    color: #fcfcfc;
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    border-radius: 5px;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1.5rem;
-    margin: 20% 0 20% 15%;
-}
-
-.sign-in form a {
-    text-decoration: none;
-    color:#262625;
-    margin: 0 25%;
-}
-
-
-.quote-search {
-    width: 100vw;
-    height: 100vh;
-    
-    position: relative;
-}
-
-.quote-search h1 {
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    font-size: 2.5rem;
-    margin: 12vh 0 0 0;
-    text-align: center;
-    box-shadow:  0px 2px 10px grey;
-}
-
-.quote-search .product {
-    display: inline-block;
-    width: 40%;
-    height: 10%;
-}
-
-.quote-search .product .l4 { 
-    display: inline-block;
+ .cantidad-texto { 
+    display: inline;
     color: #999490;
     font-weight: bolder;
     font-size: 1rem;
-    margin: 3% 5% 0 8%;
-}
+    margin: 3% 0% 0 8%;
 
-.quote-search .product .i4[type=search] {
-    display: inline-block;
+}
+.cantidad-input {
+    display: inline;
     width: 90%;
-    height: 45%;
+    height: 40%;
     display: block;
     color: black;
     background-color: #f8f4f1;
@@ -654,40 +568,23 @@ header .menu {
     box-shadow: 0px 2px 10px grey;
     text-align: center;
     font-size: 1rem;
-    margin: 0 0 0 8%;
-}
-
-.quote-search .amount {
-    display: inline-block;
-    float:  right;
-    width: 55%;
-    height: 10%;
-}
-
-.quote-search .amount .l5 { 
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-    margin: 3% 5% 0 8%;
-}
-
-.quote-search .amount .i5[type=number] {
-    display: inline-block;
-    width: 25%;
-    height: 38%;
-    display: block;
-    color: black;
-    background-color: #f8f4f1;
-    border-radius: 5px;
-    border: 3px solid #FF6300;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1rem;
-    margin: 0 0 0 8%;
+    margin: 0 0 0 ;
   
 }
-
+.add {
+  display: inline;
+    width: 20%;
+    height: 60%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 10% 0 0 0%;
+}
 
 /*no se está acomodando 
 .quote-search .amount a {
@@ -1211,3 +1108,4 @@ header .menu {
     font-size: 1rem;
     margin: 10% auto 3% auto;
 }
+</style>
