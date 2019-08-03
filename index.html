@@ -127,27 +127,28 @@
                 <div class="payment">
                 <p>Forma de pago</p>
 
-                    <input type="radio" value="Efectivo" id="cash">
-                    <label for="cash">Efectivo</label>
+                    <input class="i14" type="radio" value="Efectivo" id="cash">
+                    <label class="l13" for="cash">Efectivo</label>
 
-                    <input type="radio" value="Tarjeta" id="card">
-                    <label for="card">Tarjeta</label>
+                    <input class="i15" type="radio" value="Tarjeta" id="card">
+                    <label class="l14" for="card">Tarjeta</label>
 
-                    <input type="radio" value="Credito" id="credit">
-                    <label for="credit">Crédito</label>
+                    <input class="i16" type="radio" value="Credito" id="credit">
+                    <label class="l15" for="credit">Crédito</label>
                 </div>
                 <div class="currency">
                 <p>Divisa</p>
 
-                    <input type="radio" value="US" id="dollar">
-                    <label for="dollar">US</label>
+                    <input class="i17" type="radio" value="US" id="dollar">
+                    <label class="l16" for="dollar">US</label>
 
-                    <input type="radio" value="MNX" id="pesos">
-                    <label for="pesos">MNX</label>
+                    <input class="i18" type="radio" value="MNX" id="pesos">
+                    <label  class="l17" for="pesos">MNX</label>
 
                     <p id="exchange"></p>
                 </div>
-                    <input type="submit" value="Cotizar">
+                
+                    <input class="i19" type="submit" value="Cotizar">
                 
                 <a class="arrowG" href="#"><i id="arrow8" class="fas fa-arrow-left"></i></a>
             </section>
@@ -179,6 +180,7 @@
 
             <section class="preview-costs">
                 <h1>COTIZADOR</h1>
+
                 <p>Subtotal $</p>
                 <p id="preview-subtotal"></p>
 
@@ -196,23 +198,25 @@
                 <p>"aquí se imprime la vigencia"</p>
                 <p>"aquí se imprime el precio del dolar"</p>
 
-                <input type="submit" value="Editar">
-                <input type="submit" value="Guardar">
-                <input type="submit" value="Enviar">
-                <input type="submit" value="Cancelar">
+                <input class="i20" type="submit" value="Editar">
+                <input class="i20" type="submit" value="Guardar">
+                <input class="i20" type="submit" value="Enviar">
+                <input class="i20" type="submit" value="Cancelar">
             
             </section>
 
             <!--PANTALLA ENVIAR POR CORREO-->
-            <section class="e-mail">
+            <section class="email">
                 <h1>COTIZADOR</h1>
-                <label for="name-client">Nombre</label>
-                <input type="text" id="name-client">
-
-                <label for="e-mail">E-mail</label>
-                <input type="email" id="e-mail" placeholder="ejemplo@ejemplo.com">
-                
-                <input type="submit" value="Enviar">
+                <div class="email1">
+                <label class="l17" for="name-client">Nombre</label>
+                <input class="i21" type="text" id="name-client">
+                </div>
+                <div class="email2">
+                <label class="l18" for="e-mail">E-mail</label>
+                <input class="i22" type="email" id="e-mail" placeholder="x@ejemplo.com">
+                </div>
+                <input class="i23" type="submit" value="Enviar">
 
             </section>
       
