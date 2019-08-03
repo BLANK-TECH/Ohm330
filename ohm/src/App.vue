@@ -97,7 +97,7 @@
           >
             <thead>
               <tr>
-                <th>Producto</th>
+                <th >Producto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Editar</th>
@@ -107,13 +107,13 @@
             <tbody>
               <tr v-for="item in products" :key="item.name">
                 <td>
-                  <img :src="item.product.img" alt="">
+                  <img class="img1"  :src="item.product.img" alt="">
                   {{ item.product.name }}
                 </td>
                 <td>{{ item.quantity }}</td>
                 <td>{{ item.product.price }}</td>
-                <td>ícono editar</td>
-                <td>ícono eliminar</td>
+                <td><i class="fas fa-pencil-alt"></i></td>
+                <td><i class="fas fa-trash-alt"></i></td>
               </tr>
             </tbody>
           </v-simple-table>
@@ -185,8 +185,8 @@
                 </td>
                 <td>{{ item.quantity }}</td>
                 <td>{{ item.price }}</td>
-                <td>ícono editar</td>
-                <td>ícono eliminar</td>
+                <td><i class="fas fa-pencil-alt"></i></td>
+                <td><i class="fas fa-trash-alt"></i></td>
               </tr>
             </tbody>
           </v-simple-table>
@@ -331,16 +331,17 @@
           
           
         <v-stepper-content step="5">
-          <section class="preview">
+          <section class="preview" id="cotizacion">
+            <div id="letra" class="letra">
             <h1>Cotización</h1>
             <p>
               No. de cotización: {{id_quotation}}
             </p>
             <h2>RESUMEN</h2>
-            <table >
+            <table id="my_table">
               <thead>
-                  <tr>
-                      <th>
+                <tr>
+                  <th>
                         Cantidad
                       </th>
                       <th id="stud" scope="col">
@@ -352,14 +353,9 @@
                       <th id="villa" scope="col">
                           Importe
                       </th>
-                  </tr>
+                </tr>
               </thead>
-              <tbody>
-                  <tr v-if="products.length > 0">
-                      <th id="par" class="span" colspan="5" scope="colgroup">
-                        En inventario
-                      </th>
-                  </tr>
+                           <tbody>
                   <tr v-for="item in products" :key="item.name">
                       <th headers="par" id="pbed1">
                         {{item.quantity}}
@@ -373,11 +369,6 @@
                       <td headers="par pbed1 villa">
                           ${{item.product.price*item.quantity}}
                       </td>
-                  </tr>
-                  <tr v-if="new_products.length > 0">
-                      <th id="rome" class="span" colspan="5" scope="colgroup">
-                        Nuevo producto
-                      </th>
                   </tr>
                   <tr v-for="item in new_products" :key="item.name">
                       <th headers="par" id="pbed1">
@@ -393,7 +384,22 @@
                           ${{item.price*item.quantity}}
                       </td>
                   </tr>
+                                <tr v-for="item in new_products" :key="item.name">
+                      <th headers="par" id="pbed1">
+                        {{item.quantity}}
+                      </th>
+                      <td headers="par pbed1 stud">
+                        {{item.name}}
+                      </td>
+                      <td headers="par pbed1 chal">
+                          ${{item.price}}
+                      </td>
+                      <td headers="par pbed1 villa">
+                          ${{item.price*item.quantity}}
+                      </td>
+                  </tr>
               </tbody>
+            
             </table>
 
               <p>Subtotal $</p>
@@ -414,38 +420,25 @@
               <p v-else id="preview-total">TOTAL ${{total}}</p>
 
 
-              <p>Vigencia de la cotización: {{validity}}</p>
+              <p>Vigencia de la cotización: {{validity}} días</p>
               <p v-if="currency == 'dollar'">{{current_currency}}</p>
-
+          </div>
           </section>
-            <v-btn
-               class="add1"
-              @click="e1 = 6"
-            >
-              Vista Previa 
-            </v-btn>
-            <v-btn  class="add1" text>Cancel</v-btn>
+          <v-btn class="add2" @click="downloadPDF">
+            Descargar PDF
+          </v-btn>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
-
-    <v-content>
-      <!-- <HelloWorld/> -->
-      <Dashboard/> 
-    </v-content>
   </v-app>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld';
-import Dashboard from './components/Dashboard';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export default {
   name: 'App',
-  components: {
-    //HelloWorld,
-    Dashboard
-  },
   data () {
     return {
       e1: 0,
@@ -555,6 +548,12 @@ export default {
   },
 
   methods: {
+    downloadPDF() {
+      let generate = new jsPDF();
+      let source = document.getElementById('cotizacion')
+      generate.fromHTML(source, 15, 15)
+      generate.save('cotizacion.pdf')
+    },
     create: function() {
       let product_filter = this.shop.filter(product => product.name == this.product)[0]
       this.products.push({
@@ -605,7 +604,11 @@ export default {
     
 <style scoped>
 
+.img1 {
+  width:100%;
+  height:100%;
 
+}
 .busqueda{
     display: inline;
     width: 80%;
@@ -750,4 +753,27 @@ export default {
     font-family: ‘Cabin’, sans-serif;
 }
 
+.add2 {
+    width: 60%;
+    height: 60%;
+    display: inline-block;
+    color: black;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 10% 5% 0 0%;
+    font-family: ‘Cabin’, sans-serif;
+}
+.letra {
+  background: linear-gradient(110deg, #FF6300 30%, rgb(250, 137, 67) 30%);
+   color:   #fcf7f4;
+    font-weight: bolder;
+    font-size: 1rem;
+    font-family: ‘Cabin’, sans-serif;
+    border-radius: 7px;
+    box-shadow: 0px 2px 10px grey;
+}
 </style>
