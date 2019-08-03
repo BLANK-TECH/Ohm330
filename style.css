@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .body-buscador{
     margin: 0;
     padding: 0;
@@ -25,3 +26,745 @@ header {
     height: 70%;  
  }
 
+=======
+/*
+--> menu anvorguesa DROPDOWN
+--> barra navegación que siempre se quede
+*/
+
+*{
+    margin: 0%;
+    padding: 0%;
+    overflow-x: hidden;
+}
+
+
+
+header {
+    width: 100vw;
+    height: 10vh;
+    border-bottom: 4px solid rgb(250, 137, 67);   
+    box-shadow:  0px 2px 10px grey;
+    
+}   
+
+header .logo {
+    width: 40%;
+    height: 100%;
+    display: inline-block;
+}
+
+header .logo img {
+    width: 100%;
+    height: 70%;
+    margin: 5% 0;
+}
+
+header .icon-menu {
+    width: 40%;
+    height: 100%;
+    display: inline-block;
+    float: right;
+   
+}
+
+header .icon-menu a {
+    width: 40%;
+    height: 100%;
+    float: right;
+    margin: 0 5% 0 0;
+     overflow-y: hidden;
+}
+
+
+header .icon-menu a i {
+    width: 60%;
+    height: 80%;
+    float: right;
+    margin: 40% 5% 0 0;
+    color: black;
+    font-size: 1.5rem;
+}
+
+
+header .menu {
+    display: none;
+}
+
+.sign-in {
+    width: 100vw;
+    height: 90vh;
+}
+
+.sign-in form {
+    width: 80%;
+    height: 80%;
+    margin: 25% auto;
+}
+
+.sign-in form .l1 {
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    margin: 0 15%;
+}
+
+.sign-in form .i1[type=text] {
+    display: inline-block;
+    width: 70%;
+    height: 10%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 2% 0 10% 15%;
+} 
+
+.sign-in form .l2 {
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    margin: 0 15%;
+}
+.sign-in form .i2[type=password]{
+    display: inline-block;
+    width: 70%;
+    height: 10%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 2% 0 10% 15%;
+}
+
+
+.sign-in form .i3[type=submit]{
+    display: inline-block;
+    width: 70%;
+    height: 10%;
+    display: block;
+    color: #fcfcfc;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 20% 0 20% 15%;
+}
+
+.sign-in form a {
+    text-decoration: none;
+    color:#262625;
+    margin: 0 25%;
+}
+
+
+.quote-search {
+    width: 100vw;
+    height: 100vh;
+    
+    position: relative;
+}
+
+.quote-search h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+.quote-search .product {
+    display: inline-block;
+    width: 40%;
+    height: 10%;
+}
+
+.quote-search .product .l4 { 
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+.quote-search .product .i4[type=search] {
+    display: inline-block;
+    width: 90%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.quote-search .amount {
+    display: inline-block;
+    float:  right;
+    width: 55%;
+    height: 10%;
+}
+
+.quote-search .amount .l5 { 
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+.quote-search .amount .i5[type=number] {
+    display: inline-block;
+    width: 25%;
+    height: 38%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+  
+}
+
+
+/*no se está acomodando 
+.quote-search .amount a {
+    display: inline-block;
+    float: right;
+    background-color: blue;
+}
+
+.quote-search .amount a i{
+    display: inline-block;
+    float: right;
+}
+*/
+
+.quote-search .arrowA #arrow2{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+.quote-search .arrowB #arrow3{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+
+.other-products {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.other-products h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+.other-products .other {
+        display: inline-block;
+        width: 40%;
+        height: 10%;
+}
+
+.other-products .other .l6 {
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+.other-products .other .i6[type=text] {
+    display: inline-block;
+    width: 90%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.other-products .other-item-quantity {
+    display: inline-block;
+    width: 25%;
+    height: 10%;
+}
+
+.other-products .other-item-quantity .l7{
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+.other-products .other-item-quantity .i7[type=number] {
+    display: inline-block;
+    width: 80%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.other-products .other-item-price {
+    display: inline-block;
+    width: 25%;
+    height: 10%;
+}
+
+.other-products .other-item-price .l8{
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+.other-products .other-item-price .i8[type=number] {
+    display: inline-block;
+    width: 80%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.other-products  .arrowC #arrow4{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+
+.other-products  .arrowD #arrow5{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.sending-validity {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.sending-validity h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+.sending-validity .val {
+    display: inline-block;
+    width: 100%;
+    height: 10%;
+}
+.sending-validity .l9 {
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+.sending-validity .i9[type=text] {
+    display: inline-block;
+    width: 30%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.sending-validity .sending {
+        display: block;
+        width: 100%;
+        height: 10%;
+}
+
+.sending-validity .sending p {
+    display: block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 3% 8%;
+}
+
+.sending-validity .sending .i10, .l10, .i11, .l11{
+    display: inline-block;
+    margin: 0 0 0 8%;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+.sending-validity .sending .l10, .i11, .l11{
+    margin: 0;
+}
+.sending-validity .postal-code {
+    display: block;
+    width: 100%;
+    height: 25%;
+    margin: 5% 0;
+}
+.sending-validity .postal-code .l12,.i12, .i13, p {
+    display: block;
+    margin: 3% 9%;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.sending-validity .postal-code .i12[type=number] {
+    display: inline-block;
+    width: 30%;
+    height: 15%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 9%;
+}
+
+.sending-validity .postal-code .i13[type=submit]{
+    display: inline-block;
+    width: 50%;
+    height: 20%;
+    display: block;
+    color: #fcfcfc;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 8% auto 3% auto;
+  
+}
+.sending-validity .arrowE #arrow6{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+.sending-validity .arrowF #arrow7{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.payment-methods {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.payment-methods h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+.payment-methods .payment {
+    width: 100%;
+    height: 20%;
+ 
+}
+
+.payment-methods .payment .i14, .l13, .i15, .l14, .i16, .l15{
+    display: inline-block;
+    margin: 0 0 0 8%;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.payment-methods .payment .l13, .i15, .l14, .i16, .l15 {
+    margin: 0 2%;
+}
+
+.payment-methods .currency {
+    width: 100%;
+    height: 20%;
+    margin: 5% 0;
+    
+}
+
+.payment-methods .currency .i17, .l16, .i18, .l17 {
+    display: inline-block;
+    margin: 0 0 0 8%;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+.payment-methods .payment  .l16, .i18, .l17 {
+    margin: 0 2%;
+}
+
+.payment-methods .i19[type=submit] {
+    display: inline-block;
+    width: 50%;
+    height: 5%;
+    display: block;
+    color: #fcfcfc;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 5% auto 3% auto;
+  
+}
+
+.payment-methods .arrowG #arrow8{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.preview {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.preview h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+.preview h2 {
+    display: inline-block;
+    margin: 0 0 0 8%;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 10% 8%;
+}
+
+.preview .arrowH #arrow9{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+.preview .arrowI #arrow10{ 
+    width: 10%;
+    height: 5%;
+    font-size: 2rem;
+    color: black;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.preview-costs {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.preview-costs h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+
+.preview-costs .i20[type=submit] {
+    display: inline-block;
+    width: 50%;
+    height: 5%;
+    display: block;
+    color: #fcfcfc;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 5% auto 3% auto;
+  
+}
+
+.email{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.email h1 {
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    font-size: 2.5rem;
+    margin: 12vh 0 0 0;
+    text-align: center;
+    box-shadow:  0px 2px 10px grey;
+}
+
+.email .email1 {
+    display: inline-block;
+    width: 50%;
+    height: 10%;
+    margin: 5% 0 0 8%;
+    
+}
+
+.email .email1 .l17 {
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+
+.email .email1  .i21[type=text] {
+    display: inline-block;
+    width: 80%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.email .email2 {
+    display: block;
+    width: 50%;
+    height: 10%;
+    margin: 5% 0 0 8%;
+}
+
+.email .email2 .l18 {
+    display: inline-block;
+    color: #999490;
+    font-weight: bolder;
+    font-size: 1rem;
+    margin: 3% 5% 0 8%;
+}
+
+
+.email .email2 .i22[type=email] {
+    display: inline-block;
+    width: 80%;
+    height: 45%;
+    display: block;
+    color: black;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 0 8%;
+}
+
+.email  .i23[type=submit] {
+    display: inline-block;
+    width: 50%;
+    height: 5%;
+    display: block;
+    color: #fcfcfc;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 10% auto 3% auto;
+}
+>>>>>>> 2cac59de62f102bec900c542131a0dcacc3b2607

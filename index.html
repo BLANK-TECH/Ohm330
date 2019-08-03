@@ -12,11 +12,11 @@
         <header>
             <!--LOGO-->
             <figure class="logo">
-                <img src="" id="">
+                <img src="img/logo-330ohms.png" id="">
             </figure>
             <!--MENU HAMBURGUESA-->
             <figure class="icon-menu">
-                <a href="#" class="" id=""><i class="fas fa-bars"></i></a>
+                <a href="#"><i class="fas fa-bars"></i></a>
             </figure>
                 <!--MENU DE NAVEGACION-->
                     <nav class="menu" id="menu">
@@ -30,34 +30,38 @@
                         </nav>
         </header>
         <!--INICIO DE SESION-->
-        <section class="sig-in">
+        <section class="sign-in">
             <form>
-                <label for="username">Usuario</label>
-                <input type="text" placeholder="Ingresa Usuario">
+                <label class="l1" for="username">Usuario</label>
+                <input class="i1" type="text" placeholder="Ingresa Usuario">
 
-                <label for="password">Contraseña</label>
-                <input type="password" placeholder="Ingresa Contraseña">
+                <label class="l2" for="password">Contraseña</label>
+                <input class="i2" type="password" placeholder="Ingresa Contraseña">
 
-                <input type="submit" value="Entrar">
+                <input class="i3" type="submit" value="Entrar">
 
-                <a href="#">¿Olvidaste tu contraseña?</a>
+                <a href="#"class="l3">¿Olvidaste tu contraseña?</a>
             </form>
         </section>
         <!--COTIZADOR-->
-        <section class="quote">
+
 
             <!--PANTALLA DE BUSQUEDA DE PRODUCTO-->
-            <section class="quote-search">
-                <label for="search">Producto</label>
-                <input type="search" placeholder="Buscar">
+        <section class="quote-search">
+                <h1>COTIZADOR</h1>
+                <div class="product">
+                    <label class="l4" for="search">Producto</label>
+                    <input class="i4" type="search" placeholder="Buscar">
+                </div>
+                <div class="amount"> 
+                    <label class="l5" for="quantity">Cantidad</label>
+                    <input class="i5" type="number">
+                    <!--<a href="#" class="l6"><i class="fas fa-plus"></i></a>-->
+                </div>
 
-                <label for="quantity">Cantidad</label>
-                <input type="number">
-
-
-                <a href="#"><i class="fas fa-plus"></i></a>
+                <!--NODOS PARA CREAR LA TABLA???-->
                 <!--tabla donde se van a imprimir los productos que vaya agregando-->
-                <table>
+                <table class="quote-table" >
                     <tr>
                         <td>Celda producto</td>
                         <td>Celda cantidad</td>
@@ -66,78 +70,93 @@
                     </tr>
                 </table>
 
-                <a href="#"><i class="fas fa-arrow-right"></i></a>
-            </section>
+                <a class="arrowA" href="#"><i id="arrow2" class="fas fa-arrow-right"></i></a>
+                <a class="arrowB" href="#"><i id="arrow3" class="fas fa-arrow-left"></i></a>
+        </section>
 
             <!--PANTALLA AGREGAR OTROS PRODUCTOS-->
-            <section class="other">
+        <section class="other-products">
+                <h1>COTIZADOR</h1>
+                <div class="other">
+                    <label class="l6"  for="other-name">Otro</label>
+                    <input class="i6" type="text" placeholder="Producto">
+                </div>
+                <div class="other-item-quantity">
+                    <label class="l7" for="other-cost">Cantidad</label>
+                    <input class="i7" type="number" placeholder="">
+                </div>
+                <div class="other-item-price">
+                    <label class="l8" for="item-p">$</label>
+                    <input class="i8" type="number">
+                    <a href="#"><i class="fas fa-plus"></i></a>
+                </div>
 
-                <label for="other-name">Otro</label>
-                <input type="text" placeholder="Nombre del producto">
+                <a class="arrowC" href="#"><i id="arrow4" class="fas fa-arrow-right"></i></a>
+                <a class="arrowD" href="#"><i id="arrow5" class="fas fa-arrow-left"></i></a>
 
-                <label for="other-cost">Precio Unitario</label>
-                <input type="number" placeholder="$">
-
-                <label for="other-quantity">Cantidad</label>
-                <input type="number">
-
-                <a href="#"><i class="fas fa-plus"></i></a>
-
-                <a href="#"><i class="fas fa-arrow-right"></i></a>
             </section>
 
             <!--PANTALLA DETALLE DE ENVIO Y VIGENCIA-->
             <section class="sending-validity">
-                <label for="validity">Vigencia</label>
-                <input type="text" id="validity">
+                <h1>COTIZADOR</h1>
+                <div class="val">
+                    <label class="l9" for="validity">Vigencia</label>
+                    <input class="i9" type="text" id="validity">
+                </div> 
+                <div class="sending">
+                    <p>Envio a domicilio</p>
+                    <input class="i10" type="radio" value="Sin envío" id="no-sending">
+                    <label class="l10" for="no-sending">Sin envío</label>
+                    <input class="i11" type="radio" value="Con envío" id="sending">
+                    <label class="l11" for="send">Con envío</label>
+                </div>
+                <div class="postal-code">
+                    <label class="l12" for="CP">Código Postal</label>
+                    <input class="i12" type="number" id="CP">
+                    <input class="i13" type="submit" value="Generar costo">
+                    <p id="print-cost">$</p>
+                </div>
+                <a class="arrowE" href="#"><i id="arrow6" class="fas fa-arrow-right"></i></a>
+                <a class="arrowF" href="#"><i id="arrow7" class="fas fa-arrow-left"></i></a>
 
-                <input type="radio" value="Sin envío" id="no-sending">
-                <label for="no-sending">Sin envío</label>
-
-                <input type="radio" value="Con envío" id="sending">
-                <label for="send">Con envío</label>
-                
-                <label for="CP">Código Postal</label>
-                <input type="number" id="CP">
-
-                <input type="submit" value="Generar costo">
-
-                <p id="print-cost">$</p>
-                <a href="#"><i class="fas fa-arrow-right"></i></a>  
             </section>
 
             <!--PANTALLA FORMA DE PAGO-->
-            <section class="way-to-pay">
-
+            <section class="payment-methods">
+                <h1>COTIZADOR</h1>
+                <div class="payment">
                 <p>Forma de pago</p>
 
-                    <input type="radio" value="Efectivo" id="cash">
-                    <label for="cash">Efectivo</label>
+                    <input class="i14" type="radio" value="Efectivo" id="cash">
+                    <label class="l13" for="cash">Efectivo</label>
 
-                    <input type="radio" value="Tarjeta" id="card">
-                    <label for="card">Tarjeta</label>
+                    <input class="i15" type="radio" value="Tarjeta" id="card">
+                    <label class="l14" for="card">Tarjeta</label>
 
-                    <input type="radio" value="Credito" id="credit">
-                    <label for="credit">Crédito</label>
-                
+                    <input class="i16" type="radio" value="Credito" id="credit">
+                    <label class="l15" for="credit">Crédito</label>
+                </div>
+                <div class="currency">
                 <p>Divisa</p>
 
-                    <input type="radio" value="US" id="dollar">
-                    <label for="dollar">US</label>
+                    <input class="i17" type="radio" value="US" id="dollar">
+                    <label class="l16" for="dollar">US</label>
 
-                    <input type="radio" value="MNX" id="pesos">
-                    <label for="pesos">MNX</label>
+                    <input class="i18" type="radio" value="MNX" id="pesos">
+                    <label  class="l17" for="pesos">MNX</label>
 
                     <p id="exchange"></p>
-
-                    <input type="submit" value="Cotizar">
+                </div>
+                
+                    <input class="i19" type="submit" value="Cotizar">
+                
+                <a class="arrowG" href="#"><i id="arrow8" class="fas fa-arrow-left"></i></a>
             </section>
 
             <!--PANTALLA VISTA PREVIA-->
             <section class="preview">
-
+                <h1>COTIZADOR</h1>
                 <h2>RESUMEN</h2>
-
                 <table>
                     <thead>
                         <tr>
@@ -154,6 +173,13 @@
                         <td>Celda total</td>
                     </tr>
                 </table>
+
+                <a class="arrowH" href="#"><i id="arrow9" class="fas fa-arrow-right"></i></a>
+                <a class="arrowI" href="#"><i id="arrow10" class="fas fa-arrow-left"></i></a>
+            </section>
+
+            <section class="preview-costs">
+                <h1>COTIZADOR</h1>
 
                 <p>Subtotal $</p>
                 <p id="preview-subtotal"></p>
@@ -172,25 +198,28 @@
                 <p>"aquí se imprime la vigencia"</p>
                 <p>"aquí se imprime el precio del dolar"</p>
 
-                <input type="submit" value="Editar">
-                <input type="submit" value="Guardar">
-                <input type="submit" value="Enviar">
-                <input type="submit" value="Cancelar">
+                <input class="i20" type="submit" value="Editar">
+                <input class="i20" type="submit" value="Guardar">
+                <input class="i20" type="submit" value="Enviar">
+                <input class="i20" type="submit" value="Cancelar">
+            
             </section>
 
             <!--PANTALLA ENVIAR POR CORREO-->
-            <section class="e-mail">
-                
-                <label for="name-client">Nombre</label>
-                <input type="text" id="name-client">
-
-                <label for="e-mail">E-mail</label>
-                <input type="email" id="e-mail" placeholder="ejemplo@ejemplo.com">
-                
-                <input type="submit" value="Enviar">
+            <section class="email">
+                <h1>COTIZADOR</h1>
+                <div class="email1">
+                <label class="l17" for="name-client">Nombre</label>
+                <input class="i21" type="text" id="name-client">
+                </div>
+                <div class="email2">
+                <label class="l18" for="e-mail">E-mail</label>
+                <input class="i22" type="email" id="e-mail" placeholder="x@ejemplo.com">
+                </div>
+                <input class="i23" type="submit" value="Enviar">
 
             </section>
-        </section>
+      
     </body>
 
 </html>
