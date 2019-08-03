@@ -30,7 +30,7 @@
           <v-layout wrap>
                       <v-flex xs6>
               <v-autocomplete
-              class="busqueda"
+                class="busqueda"
                 v-model="product"
                 :disabled="isUpdating"
                 :items="shop"
@@ -47,7 +47,7 @@
                     @click="data.select"
                   >
                     <v-avatar left>
-                      <v-img src="data.item.img"></v-img>
+                      <v-img :src="data.item.img"></v-img>
                     </v-avatar>
                     {{ data.item.name }}
                   </v-chip>
@@ -78,8 +78,8 @@
               </v-text-field>
             </v-flex>
             <v-flex xs3>
-              <v-btn class="add" @click="create()">
-                <v-icon dark>add</v-icon>
+              <v-btn class="add"  @click="create()">
+                <v-icon dark>+</v-icon>
               </v-btn>
             </v-flex>
           </v-layout>
@@ -97,8 +97,8 @@
           >
             <thead>
               <tr>
-                <th class="text-left">Producto</th>
-                <th class="text-left">Cantidad</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
@@ -118,20 +118,21 @@
             </tbody>
           </v-simple-table>
            <v-btn 
-            color="primary"
+            class="add1"
             @click="e1 = 2"
           >
             Continue
           </v-btn>
-          <v-btn text>Cancel</v-btn>
+          <v-btn class="add1" text>Cancel</v-btn>
         </v-stepper-content>
   
         <v-stepper-content step="2">
           <v-layout wrap>
             <v-flex xs4>
-              <label class="l5" for="quantity">Nuevo producto</label>
+              <label  class="cantidad-texto" for="quantity">Nuevo producto</label>
               <v-text-field
-                v-model="new_product.name"
+                class="cantidad-input"
+                v-model="new_product_name"
                 type="text"
               >
               </v-text-field>
@@ -139,19 +140,19 @@
             <v-flex xs3>
               <label class="cantidad-texto" for="quantity">Cantidad</label>
               <v-text-field
-              class=""
-                v-model="new_product.quantity"
+              class="cantidad-input"
+                v-model="new_product_quantity"
                 type="number"
                 value="0"
                 min="0"
               >
               </v-text-field>
             </v-flex>
-            <v-flex xs3>
-              <label class="cantidad-texto" for="quantity">Precio</label>
+            <v-flex xs2>
+              <label class="cantidad-texto" for="quantity">$</label>
               <v-text-field
                 class="cantidad-input"
-                v-model="new_product.price"
+                v-model="new_product_price"
                 type="number"
                 value="0"
                 min="0"
@@ -160,7 +161,7 @@
             </v-flex>
             <v-flex xs2>
               <v-btn class="add"  @click="create_new_product()">
-                <v-icon dark>add</v-icon>
+                <v-icon dark>+</v-icon>
               </v-btn>
             </v-flex>
           </v-layout>
@@ -190,47 +191,52 @@
             </tbody>
           </v-simple-table>
           <v-btn
-            color="primary"
+            class="add1"
             @click="e1 = 3"
           >
             Continue
           </v-btn>
-          <v-btn text>Cancel</v-btn>
+          <v-btn class="add1" text>Cancel</v-btn>
         </v-stepper-content>
   
         <v-stepper-content step="3">
           <section class="sending-validity">
-            <v-flex xs>
-              <label class="l5" for="quantity">Vigencia de la cotización</label>
+            <v-flex xs10>
+              <label class="cantidad-texto" for="quantity">Vigencia de la cotización</label>
               <div>
                 <v-text-field
+                  class="cantidad-input1"
                   v-model="validity"
                   type="number"
                   value="0"
                   min="0"
                 >
                 </v-text-field>
-                días
+                <span class="cantidad-texto">días</span>
               </div>
             </v-flex>
+
             <div class="sending">
-              <p>Envio a domicilio</p>
-              <label class="l10">Sin envío</label>
+              <p class="cantidad-texto">Envio a domicilio</p>
+              <p class="cantidad-texto">Sin envío</p>
               <v-switch v-model="shipping" inset></v-switch>
-              <label>Con envío</label>
+              <p class="cantidad-texto">Con envío</p>
             </div>
             <div v-if="shipping">
-              <label>Código Postal</label>
+              
               <v-text-field
+                class="cantidad-input2"
                 v-model="zone_code"
                 type="number"
                 value="0"
                 min="0"
+                
               >
               </v-text-field>
-              <v-btn class="ma-2" color="primary" dark @click="generate_cost()">
+              
+              <v-btn class="consultar" @click="generate_cost()">
                 Consultar
-                <v-icon dark right>cached</v-icon>
+                <v-icon dark right></v-icon>
               </v-btn>
               <p v-if="shipping_cost > 0">${{shipping_cost}}</p>
             </div>
@@ -238,17 +244,17 @@
             </section>
 
           <v-btn
-            color="primary"
+            class="add1"
             @click="e1 = 4"
           >
             Continue
           </v-btn>
-          <v-btn text>Cancel</v-btn>
+          <v-btn class="add1" text>Cancel</v-btn>
         </v-stepper-content>
   
         <v-stepper-content step="4">
           <div class="payment">
-            <p>Forma de pago</p>
+            <p class="cantidad-texto">Forma de pago</p>
             <v-radio-group v-model="payment">
               <v-radio
                 label="Efectivo"
@@ -268,8 +274,9 @@
             </v-radio-group>
             <div v-if="payment == 'credit'">
               <div>
-                <label>Mensualidades</label>
+                <label class="cantidad-texto">Mensualidades</label>
                 <v-text-field
+                class="cantidad-input3"
                   v-model="month_pay"
                   type="number"
                   value="0"
@@ -280,6 +287,7 @@
               <div>
                 <label>Intereses</label>
                 <v-text-field
+                  class="cantidad-input3"
                   v-model="interest"
                   type="number"
                   value="0"
@@ -306,78 +314,117 @@
             </v-radio-group>
           </div>
           <div v-if="currency == 'dollar'">
-            <v-btn class="ma-2" color="primary" dark @click="generate_currency()">
+            <v-btn class="consultar" @click="generate_currency()">
               Consultar
-              <v-icon dark right>cached</v-icon>
+              <v-icon dark right></v-icon>
             </v-btn>
             <p>{{current_currency}}</p>
           </div>          
           <v-btn
-            color="primary"
+            class="add1"
             @click="e1 = 5"
           >
             Continue
           </v-btn>
-          <v-btn text>Cancel</v-btn>
+          <v-btn  class="add1" text>Cancel</v-btn>
         </v-stepper-content>
           
           
         <v-stepper-content step="5">
           <section class="preview">
-            <h1>cotización</h1>
+            <h1>Cotización</h1>
+            <p>
+              No. de cotización: {{id_quotation}}
+            </p>
             <h2>RESUMEN</h2>
-            <table>
+            <table >
               <thead>
-                <tr>
-                  <th>Cant</th>
-                  <th>Producto</th>
-                  <th>Precio Unitario</th>
-                  <th>Total</th>
-                </tr>
+                  <tr>
+                      <th>
+                        Cantidad
+                      </th>
+                      <th id="stud" scope="col">
+                        Descripción
+                      </th>
+                      <th id="chal" scope="col">
+                          Precio
+                      </th>
+                      <th id="villa" scope="col">
+                          Importe
+                      </th>
+                  </tr>
               </thead>
-                <tr>
-                <td>Celda cantidad</td>
-                  <td>Celda producto</td>
-                  <td>Celda precio unitario</td>
-                  <td>Celda total</td>
-                </tr>
+              <tbody>
+                  <tr v-if="products.length > 0">
+                      <th id="par" class="span" colspan="5" scope="colgroup">
+                        En inventario
+                      </th>
+                  </tr>
+                  <tr v-for="item in products" :key="item.name">
+                      <th headers="par" id="pbed1">
+                        {{item.quantity}}
+                      </th>
+                      <td headers="par pbed1 stud">
+                        {{item.product.name}}
+                      </td>
+                      <td headers="par pbed1 chal">
+                          ${{item.product.price}}
+                      </td>
+                      <td headers="par pbed1 villa">
+                          ${{item.product.price*item.quantity}}
+                      </td>
+                  </tr>
+                  <tr v-if="new_products.length > 0">
+                      <th id="rome" class="span" colspan="5" scope="colgroup">
+                        Nuevo producto
+                      </th>
+                  </tr>
+                  <tr v-for="item in new_products" :key="item.name">
+                      <th headers="par" id="pbed1">
+                        {{item.quantity}}
+                      </th>
+                      <td headers="par pbed1 stud">
+                        {{item.name}}
+                      </td>
+                      <td headers="par pbed1 chal">
+                          ${{item.price}}
+                      </td>
+                      <td headers="par pbed1 villa">
+                          ${{item.price*item.quantity}}
+                      </td>
+                  </tr>
+              </tbody>
             </table>
 
-            
-          </section>
-
-            <section class="preview-costs">
-              <h1>COTIZADOR</h1>
-
               <p>Subtotal $</p>
-              <p id="preview-subtotal"></p>
+              <p id="preview-subtotal">{{subtotal}}</p>
 
               <p>IVA $</p>
-              <p id="IVA"></p>
+              <p id="IVA">{{iva}}</p>
 
-              <p>Envío $</p>
-              <p id="preview-sending"></p>
+              <p v-if="shipping">Envío $</p>
+              <p v-if="shipping" id="preview-sending">{{shipping_cost}}</p>
 
-              <p>TOTAL $</p>
-              <p id="preview-total"></p>
+              <p v-if="payment == 'credit'">
+                Mensualidades: {{month_pay}} <br>
+                Interés: {{interest}}% <br>
+                Total: ${{total*100/interest}} <br>
+                A pagar en cada mensualidad: ${{(total*100/interest)/month_pay}}
+              </p>
+              <p v-else id="preview-total">TOTAL ${{total}}</p>
 
-              <p id="monthly">"aquí se imprime la mensualidad"</p>
 
-              <p>"aquí se imprime la vigencia"</p>
-              <p>"aquí se imprime el precio del dolar"</p>
+              <p>Vigencia de la cotización: {{validity}}</p>
+              <p v-if="currency == 'dollar'">{{current_currency}}</p>
 
-              <input class="i20" type="submit" value="Editar">
-              <input class="i20" type="submit" value="Guardar">
-              <input class="i20" type="submit" value="Enviar">
-              <input class="i20" type="submit" value="Cancelar">
-            </section>
+          </section>
             <v-btn
-              color="primary"
+               class="add1"
               @click="e1 = 6"
             >
               Vista Previa 
             </v-btn>
-            <v-btn text>Cancel</v-btn>
+            <v-btn  class="add1" text>Cancel</v-btn>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -406,7 +453,6 @@ export default {
       fixedHeader: true,
       currency: 'peso',
       current_currency: '',
-      validity: 0,
       height: 300,
       validity: 0,
       zone_code: 0,
@@ -415,11 +461,9 @@ export default {
       interest: 0,
       month_pay: 0,
       product: '',
-      new_product: {
-        name: '',
-        quantity: 0,
-        price: 0
-      },
+      new_product_quantity: 0,
+      new_product_price: 0,
+      new_product_name: '',
       quantity: 0,
       new_products: [],
       products: [],
@@ -482,6 +526,26 @@ export default {
     }
   },
 
+  computed: {
+    id_quotation() {
+      return Math.round(Date.now() + Math.random())
+    },
+    subtotal(){
+      let total_product = []
+      let sum_stock = this.products.map(item => total_product.push(item.product.price*item.quantity))
+      let total_new_product = []
+      let sum_new = this.new_products.map(item => total_new_product.push(item.price*item.quantity))
+      
+      return total_product.reduce((a, b) => a + b, 0) + total_new_product.reduce((a, b) => a + b, 0)
+    },
+    iva() {
+      return this.subtotal*0.16
+    },
+    total() {
+      return this.subtotal + this.iva + this.shipping_cost
+    }
+  },
+
   watch: {
     isUpdating (val) {
       if (val) {
@@ -494,14 +558,23 @@ export default {
     create: function() {
       let product_filter = this.shop.filter(product => product.name == this.product)[0]
       this.products.push({
-        product_filter,
+        product: product_filter,
         quantity: this.quantity
       })
       this.clear_inputs()
     },
     create_new_product: function() {
-      this.new_products.push(this.new_product)
-      this.clear_inputs()
+      this.new_products.push({
+        name: this.new_product_name,
+        quantity: this.new_product_quantity,
+        price: this.new_product_price
+      })
+      this.clear_inputs_new()
+    },
+    clear_inputs_new: function() {
+      this.new_product_name = '',
+      this.new_product_quantity = 0,
+      this.new_product_price = 0
     },
     clear_inputs: function () {
       this.product = ''
@@ -546,6 +619,7 @@ export default {
     text-align: center;
     font-size: 1rem;
     margin: 15% 0 0 8%;
+    font-family: ‘Cabin’, sans-serif;
 }
 
  .cantidad-texto { 
@@ -554,7 +628,8 @@ export default {
     font-weight: bolder;
     font-size: 1rem;
     margin: 3% 0% 0 8%;
-
+    font-family: ‘Cabin’, sans-serif;
+    
 }
 .cantidad-input {
     display: inline;
@@ -569,209 +644,45 @@ export default {
     text-align: center;
     font-size: 1rem;
     margin: 0 0 0 ;
-  
+    font-family: ‘Cabin’, sans-serif;
 }
+
 .add {
-  display: inline;
+    display: inline;
     width: 20%;
     height: 60%;
     display: block;
     color: black;
-    background-color: #f8f4f1;
+    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
     border-radius: 5px;
     border: 3px solid #FF6300;
     box-shadow: 0px 2px 10px grey;
     text-align: center;
     font-size: 1rem;
     margin: 10% 0 0 0%;
+    font-family: ‘Cabin’, sans-serif;
 }
 
-/*no se está acomodando 
-.quote-search .amount a {
-    display: inline-block;
-    float: right;
-    background-color: blue;
-}
-
-.quote-search .amount a i{
-    display: inline-block;
-    float: right;
-}
-*/
-
-.quote-search .arrowA #arrow2{ 
-    width: 10%;
-    height: 5%;
-    font-size: 2rem;
+.consultar {
+  display: inline;
+    width: 60%;
+    height: 60%;
+    display: block;
     color: black;
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-}
-
-.quote-search .arrowB #arrow3{ 
-    width: 10%;
-    height: 5%;
-    font-size: 2rem;
-    color: black;
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-}
-
-
-.other-products {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
-
-.other-products h1 {
     background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    font-size: 2.5rem;
-    margin: 12vh 0 0 0;
-    text-align: center;
-    box-shadow:  0px 2px 10px grey;
-}
-
-.other-products .other {
-        display: inline-block;
-        width: 40%;
-        height: 10%;
-}
-
-.other-products .other .l6 {
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-    margin: 3% 5% 0 8%;
-}
-
-.other-products .other .i6[type=text] {
-    display: inline-block;
-    width: 90%;
-    height: 45%;
-    display: block;
-    color: black;
-    background-color: #f8f4f1;
     border-radius: 5px;
     border: 3px solid #FF6300;
     box-shadow: 0px 2px 10px grey;
     text-align: center;
     font-size: 1rem;
-    margin: 0 0 0 8%;
+    margin: 10% 0 0 0%;
+    font-family: ‘Cabin’, sans-serif;
 }
 
-.other-products .other-item-quantity {
-    display: inline-block;
-    width: 25%;
-    height: 10%;
-}
-
-.other-products .other-item-quantity .l7{
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-    margin: 3% 5% 0 8%;
-}
-
-.other-products .other-item-quantity .i7[type=number] {
-    display: inline-block;
-    width: 80%;
-    height: 45%;
-    display: block;
-    color: black;
-    background-color: #f8f4f1;
-    border-radius: 5px;
-    border: 3px solid #FF6300;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1rem;
-    margin: 0 0 0 8%;
-}
-
-.other-products .other-item-price {
-    display: inline-block;
-    width: 25%;
-    height: 10%;
-}
-
-.other-products .other-item-price .l8{
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-    margin: 3% 5% 0 8%;
-}
-
-.other-products .other-item-price .i8[type=number] {
-    display: inline-block;
-    width: 80%;
-    height: 45%;
-    display: block;
-    color: black;
-    background-color: #f8f4f1;
-    border-radius: 5px;
-    border: 3px solid #FF6300;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1rem;
-    margin: 0 0 0 8%;
-}
-
-.other-products  .arrowC #arrow4{ 
-    width: 10%;
+.cantidad-input1 {
+    display: inline;
+    width: 70%;
     height: 5%;
-    font-size: 2rem;
-    color: black;
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-}
-
-
-.other-products  .arrowD #arrow5{ 
-    width: 10%;
-    height: 5%;
-    font-size: 2rem;
-    color: black;
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-}
-
-.sending-validity {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
-
-.sending-validity h1 {
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    font-size: 2.5rem;
-    margin: 12vh 0 0 0;
-    text-align: center;
-    box-shadow:  0px 2px 10px grey;
-}
-.sending-validity .val {
-    display: inline-block;
-    width: 100%;
-    height: 10%;
-}
-.sending-validity .l9 {
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-    margin: 3% 5% 0 8%;
-}
-
-.sending-validity .i9[type=text] {
-    display: inline-block;
-    width: 30%;
-    height: 45%;
     display: block;
     color: black;
     background-color: #f8f4f1;
@@ -780,51 +691,14 @@ export default {
     box-shadow: 0px 2px 10px grey;
     text-align: center;
     font-size: 1rem;
-    margin: 0 0 0 8%;
-}
-
-.sending-validity .sending {
-        display: block;
-        width: 100%;
-        height: 10%;
-}
-
-.sending-validity .sending p {
-    display: block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-    margin: 3% 5% 3% 8%;
-}
-
-.sending-validity .sending .i10, .l10, .i11, .l11{
-    display: inline-block;
-    margin: 0 0 0 8%;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-}
-.sending-validity .sending .l10, .i11, .l11{
-    margin: 0;
-}
-.sending-validity .postal-code {
-    display: block;
-    width: 100%;
-    height: 25%;
     margin: 5% 0;
-}
-.sending-validity .postal-code .l12,.i12, .i13, p {
-    display: block;
-    margin: 3% 9%;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
+    font-family: ‘Cabin’, sans-serif;
 }
 
-.sending-validity .postal-code .i12[type=number] {
-    display: inline-block;
-    width: 30%;
-    height: 15%;
+.cantidad-input2 {
+    display: inline;
+    width: 60%;
+    height: 5%;
     display: block;
     color: black;
     background-color: #f8f4f1;
@@ -833,279 +707,47 @@ export default {
     box-shadow: 0px 2px 10px grey;
     text-align: center;
     font-size: 1rem;
-    margin: 0 0 0 9%;
-}
-
-.sending-validity .postal-code .i13[type=submit]{
-    display: inline-block;
-    width: 50%;
-    height: 20%;
-    display: block;
-    color: #fcfcfc;
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    border-radius: 5px;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1rem;
-    margin: 8% auto 3% auto;
-  
-}
-.sending-validity .arrowE #arrow6{ 
-    width: 10%;
-    height: 5%;
-    font-size: 2rem;
-    color: black;
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-}
-.sending-validity .arrowF #arrow7{ 
-    width: 10%;
-    height: 5%;
-    font-size: 2rem;
-    color: black;
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-}
-
-.payment-methods {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
-
-.payment-methods h1 {
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    font-size: 2.5rem;
-    margin: 12vh 0 0 0;
-    text-align: center;
-    box-shadow:  0px 2px 10px grey;
-}
-
-.payment-methods .payment {
-    width: 100%;
-    height: 20%;
- 
-}
-
-.payment-methods .payment .i14, .l13, .i15, .l14, .i16, .l15{
-    display: inline-block;
-    margin: 0 0 0 8%;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-}
-
-.payment-methods .payment .l13, .i15, .l14, .i16, .l15 {
-    margin: 0 2%;
-}
-
-.payment-methods .currency {
-    width: 100%;
-    height: 20%;
     margin: 5% 0;
-    
+    font-family: ‘Cabin’, sans-serif;
 }
 
-.payment-methods .currency .i17, .l16, .i18, .l17 {
+.add1 {
+    width: 45%;
+    height: 60%;
     display: inline-block;
-    margin: 0 0 0 8%;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-}
-
-.payment-methods .payment  .l16, .i18, .l17 {
-    margin: 0 2%;
-}
-
-.payment-methods .i19[type=submit] {
-    display: inline-block;
-    width: 50%;
-    height: 5%;
-    display: block;
-    color: #fcfcfc;
+    color: black;
     background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
     border-radius: 5px;
+    border: 3px solid #FF6300;
     box-shadow: 0px 2px 10px grey;
     text-align: center;
     font-size: 1rem;
-    margin: 5% auto 3% auto;
-  
+    margin: 10% 5% 0 0%;
+    font-family: ‘Cabin’, sans-serif;
 }
 
-.payment-methods .arrowG #arrow8{ 
-    width: 10%;
-    height: 5%;
-    font-size: 2rem;
+.cantidad-input3 {
+    display: inline;
+    width: 60%;
+    height: 10%;
+    display: block;
     color: black;
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
+    background-color: #f8f4f1;
+    border-radius: 5px;
+    border: 3px solid #FF6300;
+    box-shadow: 0px 2px 10px grey;
+    text-align: center;
+    font-size: 1rem;
+    margin: 5% 0;
+    font-family: ‘Cabin’, sans-serif;
 }
-
 .preview {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
-
-.preview h1 {
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    font-size: 2.5rem;
-    margin: 12vh 0 0 0;
-    text-align: center;
-    box-shadow:  0px 2px 10px grey;
-}
-
-.preview h2 {
-    display: inline-block;
-    margin: 0 0 0 8%;
-    color: #999490;
+    display: inline;
+    color:  #3d3d3c ;
     font-weight: bolder;
     font-size: 1rem;
-    margin: 10% 8%;
+    margin: 3% 0% 0 8%;
+    font-family: ‘Cabin’, sans-serif;
 }
 
-.preview .arrowH #arrow9{ 
-    width: 10%;
-    height: 5%;
-    font-size: 2rem;
-    color: black;
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-}
-
-.preview .arrowI #arrow10{ 
-    width: 10%;
-    height: 5%;
-    font-size: 2rem;
-    color: black;
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-}
-
-.preview-costs {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
-
-.preview-costs h1 {
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    font-size: 2.5rem;
-    margin: 12vh 0 0 0;
-    text-align: center;
-    box-shadow:  0px 2px 10px grey;
-}
-
-
-.preview-costs .i20[type=submit] {
-    display: inline-block;
-    width: 50%;
-    height: 5%;
-    display: block;
-    color: #fcfcfc;
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    border-radius: 5px;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1rem;
-    margin: 5% auto 3% auto;
-  
-}
-
-.email{
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
-
-.email h1 {
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    font-size: 2.5rem;
-    margin: 12vh 0 0 0;
-    text-align: center;
-    box-shadow:  0px 2px 10px grey;
-}
-
-.email .email1 {
-    display: inline-block;
-    width: 50%;
-    height: 10%;
-    margin: 5% 0 0 8%;
-    
-}
-
-.email .email1 .l17 {
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-    margin: 3% 5% 0 8%;
-}
-
-
-.email .email1  .i21[type=text] {
-    display: inline-block;
-    width: 80%;
-    height: 45%;
-    display: block;
-    color: black;
-    background-color: #f8f4f1;
-    border-radius: 5px;
-    border: 3px solid #FF6300;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1rem;
-    margin: 0 0 0 8%;
-}
-
-.email .email2 {
-    display: block;
-    width: 50%;
-    height: 10%;
-    margin: 5% 0 0 8%;
-}
-
-.email .email2 .l18 {
-    display: inline-block;
-    color: #999490;
-    font-weight: bolder;
-    font-size: 1rem;
-    margin: 3% 5% 0 8%;
-}
-
-
-.email .email2 .i22[type=email] {
-    display: inline-block;
-    width: 80%;
-    height: 45%;
-    display: block;
-    color: black;
-    background-color: #f8f4f1;
-    border-radius: 5px;
-    border: 3px solid #FF6300;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1rem;
-    margin: 0 0 0 8%;
-}
-
-.email  .i23[type=submit] {
-    display: inline-block;
-    width: 50%;
-    height: 5%;
-    display: block;
-    color: #fcfcfc;
-    background: linear-gradient(110deg, #FF6300 60%, rgb(250, 137, 67) 60%);
-    border-radius: 5px;
-    box-shadow: 0px 2px 10px grey;
-    text-align: center;
-    font-size: 1rem;
-    margin: 10% auto 3% auto;
-}
 </style>
