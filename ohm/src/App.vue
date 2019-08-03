@@ -62,26 +62,26 @@
                     </v-list-item-avatar>
                     <v-list-item-content>
                       <v-list-item-title v-html="data.item.name"></v-list-item-title>
-                      <v-list-item-subtitle v-html="data.item.price"></v-list-item-subtitle>
+                      <v-list-item-subtitle v-html="`$${data.item.price}`"></v-list-item-subtitle>
                     </v-list-item-content>
                   </template>
                 </template>
               </v-autocomplete>
             </v-flex>
-          <v-flex xs2>
-            <label class="l5" for="quantity">Cantidad</label>
-            <v-text-field
-              v-model="quantity"
-              type="number"
-              value="0"
-            >
-            </v-text-field>
-          </v-flex>
-          <v-flex xs2>
-            <v-btn class="mx-2" fab dark color="indigo" @click="create()">
-              <v-icon dark>add</v-icon>
-            </v-btn>
-          </v-flex>
+            <v-flex xs2>
+              <label class="l5" for="quantity">Cantidad</label>
+              <v-text-field
+                v-model="quantity"
+                type="number"
+                value="0"
+              >
+              </v-text-field>
+            </v-flex>
+            <v-flex xs2>
+              <v-btn class="mx-2" fab dark color="indigo" @click="create()">
+                <v-icon dark>add</v-icon>
+              </v-btn>
+            </v-flex>
           </v-layout>
           
           
@@ -127,19 +127,66 @@
         </v-stepper-content>
   
         <v-stepper-content step="2">
-          <div class="other">
-            <label class="l6"  for="other-name">Otro</label>
-            <input class="i6" type="text" placeholder="Producto">
-          </div>
-          <div class="other-item-quantity">
-            <label class="l7" for="other-cost">Cantidad</label>
-            <input class="i7" type="number" placeholder="">
-          </div>
-          <div class="other-item-price">
-            <label class="l8" for="item-p">$</label>
-            <input class="i8" type="number">
-            <a href="#"><i class="fas fa-plus"></i></a>
-          </div>
+          <v-layout wrap>
+            <v-flex xs6>
+              <label class="l5" for="quantity">Nuevo producto</label>
+              <v-text-field
+                v-model="new_product.name"
+                type="text"
+              >
+              </v-text-field>
+            </v-flex>
+            <v-flex xs2>
+              <label class="l5" for="quantity">Cantidad</label>
+              <v-text-field
+                v-model="new_product.quantity"
+                type="number"
+                value="0"
+                min="0"
+              >
+              </v-text-field>
+            </v-flex>
+            <v-flex xs2>
+              <label class="l5" for="quantity">Precio</label>
+              <v-text-field
+                v-model="new_product.price"
+                type="number"
+                value="0"
+                min="0"
+              >
+              </v-text-field>
+            </v-flex>
+            <v-flex xs2>
+              <v-btn class="mx-2" fab dark color="indigo" @click="create_new_product()">
+                <v-icon dark>add</v-icon>
+              </v-btn>
+            </v-flex>
+          </v-layout>
+          <v-simple-table
+            :fixed-header="fixedHeader"
+            :height="height"
+          >
+            <thead>
+              <tr>
+                <th class="text-left">Producto</th>
+                <th class="text-left">Cantidad</th>
+                <th>Precio</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in new_products" :key="item.name">
+                <td>
+                  {{ item.name }}
+                </td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+                <td>ícono editar</td>
+                <td>ícono eliminar</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
           <v-btn
             color="primary"
             @click="e1 = 3"
@@ -301,7 +348,13 @@ export default {
       fixedHeader: true,
       height: 300,
       product: '',
+      new_product: {
+        name: '',
+        quantity: '',
+        price: ''
+      },
       quantity: '',
+      new_products: [],
       products: [],
       isUpdating: false,
       shop: [
@@ -370,12 +423,15 @@ export default {
 
   methods: {
     create: function() {
-      console.log('product', this.shop.filter(product => product.name == this.product)[0])
       let product_filter = this.shop.filter(product => product.name == this.product)[0]
       this.products.push({
         product: product_filter,
         quantity: this.quantity
       })
+      this.clear_inputs()
+    },
+    create_new_product: function() {
+      this.new_products.push(this.new_product)
       this.clear_inputs()
     },
     clear_inputs: function () {
@@ -385,3 +441,11 @@ export default {
   },
 };
 </script>
+    
+<style scoped>
+.l5 {
+  color: black;
+  font-size: 1rem;
+}
+</style>
+
