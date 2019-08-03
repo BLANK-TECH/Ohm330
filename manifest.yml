@@ -4,4 +4,4 @@ applications:
   instances: 1
   name: Ohm330
   disk_quota: 1024M
-  random-route: true
+  random-route: false
